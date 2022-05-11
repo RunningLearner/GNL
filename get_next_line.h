@@ -6,8 +6,13 @@
 /*   By: seunam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 10:19:17 by seunam            #+#    #+#             */
-/*   Updated: 2022/04/23 10:19:19 by seunam           ###   ########.fr       */
+/*   Updated: 2022/05/11 12:41:51 by seunam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# include <unistd.h>
+# include <stdlib.h>
 
+#endif
