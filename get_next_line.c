@@ -6,13 +6,13 @@
 /*   By: seunam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 10:19:09 by seunam            #+#    #+#             */
-/*   Updated: 2022/05/27 17:23:03 by seunam           ###   ########.fr       */
+/*   Updated: 2022/05/27 17:26:07 by seunam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	cnt;
 
