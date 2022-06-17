@@ -12,16 +12,6 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	cnt;
-
-	cnt = 0;
-	while (*s ++)
-		cnt ++;
-	return (cnt);
-}
-
 static char	*ft_read_line(int fd, char *buf, char *backup)
 {
 	int	cnt;
