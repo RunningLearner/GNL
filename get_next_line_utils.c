@@ -12,43 +12,31 @@
 
 #include "get_next_line.h"
 
-static char	*startbigger(void)
-{
-	char	*str;
-
-	str = malloc(1);
-	if (!str)
-		return (NULL);
-	*str = 0;
-	return (str);
-}
-
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
-	size_t	idx;
-	size_t	slen;
+	char			*ptr;
+	unsigned int	i;
+	unsigned int	j;
 
-	if (!s)
-		return (NULL);
-	slen = 0;
-	while (s[slen])
-		slen ++;
-	if (slen - start < len)
-		len = slen - start;
-	if (start > slen)
-		return (startbigger());
-	str = malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	idx = 0;
-	while (s[idx + start] && idx < len)
+	if(len > ft_strlen(s))
 	{
-		str[idx] = s[start + idx];
-		idx ++;
+		len = ft_strlen(s);
 	}
-	str[idx] = 0;
-	return (str);
+	ptr = (char *)malloc(len + 1);
+	i = start;
+	j = 0;
+	if (ptr == NULL)
+	{
+		return (NULL);
+	}
+	while (j < len && i < ft_strlen(s))
+	{
+		ptr[j] = s[i];
+		i++;
+		j++;
+	}
+	ptr[j] = '\0';
+	return (ptr);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
