@@ -12,6 +12,16 @@
 
 #include "get_next_line.h"
 
+size_t	ft_strlen(const char *s)
+{
+	size_t	cnt;
+
+	cnt = 0;
+	while (*s ++)
+		cnt ++;
+	return (cnt);
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*ptr;
