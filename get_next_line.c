@@ -14,7 +14,7 @@
 
 static char	*ft_read_line(int fd, char *buf, char *backup)
 {
-	int	cnt;
+	int		cnt;
 	char	*tmp;
 
 	cnt = 1;
@@ -42,8 +42,8 @@ static char	*ft_read_line(int fd, char *buf, char *backup)
 
 static char	*ft_cut_line(char *line)
 {
-	int   i;
-	char  *res;
+	int		i;
+	char	*res;
 
 	i = 0;
 	while (line[i] != '\n' && line[i] != '\0')
@@ -54,19 +54,19 @@ static char	*ft_cut_line(char *line)
 	if (!res)
 		return (NULL);
 	if (res[0] == '\0')
-       {
-	       free(res);
-	       res = NULL;
-	       return (NULL);
-       }
+	{
+		free(res);
+		res = NULL;
+		return (NULL);
+	}
 	line[i + 1] = '\0';
 	return (res);
 }
 
 char	*get_next_line(int fd)
 {
-	char	*line;
-	char	*buf;
+	char		*line;
+	char		*buf;
 	static char	*backup;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
