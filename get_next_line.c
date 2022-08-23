@@ -63,6 +63,34 @@ static char	*ft_cut_line(char *line)
 	return (res);
 }
 
+static char	*ft_cut_return_line(char *line)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	if (!line[i]) 
+		return (NULL);
+	while (line[i] && line[i] != '\n') 
+		i++;
+	str = (char *)malloc(sizeof(char) * (i + 2)); 
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (line[i] && line[i] != '\n') 
+	{
+		str[i] = line[i]; 
+		i++;
+	}
+	if (line[i] == '\n') 
+	{
+		str[i] = line[i]; 
+		i++;
+	}
+	str[i] = '\0'; 
+	return (str);
+}
+
 char	*get_next_line(int fd)
 {
 	char		*line;
@@ -80,5 +108,6 @@ char	*get_next_line(int fd)
 	if (!line)
 		return (NULL);
 	backup = ft_cut_line(line);
+	line = ft_cut_return_line(line);
 	return (line);
 }
