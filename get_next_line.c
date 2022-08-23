@@ -6,7 +6,7 @@
 /*   By: seunam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 10:19:09 by seunam            #+#    #+#             */
-/*   Updated: 2022/05/27 18:09:50 by seunam           ###   ########.fr       */
+/*   Updated: 2022/08/23 13:04:19 by seunam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_read(int fd, char *backup)
 	int		cnt;
 
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!str)
+	if (!buf)
 		return (NULL);
 	cnt = 1;
 	while (!ft_strchr(backup, '\n') && cnt != 0)
@@ -70,7 +70,7 @@ char	*ft_cut_backup(char *backup)
 {
 	int		i;
 	int		j;
-	char	*tmp;
+	char	*str;
 
 	i = 0;
 	j = 0;
@@ -82,16 +82,16 @@ char	*ft_cut_backup(char *backup)
 		backup = NULL;
 		return (NULL);
 	}
-	tmp = (char *)malloc(sizeof(char) * (ft_strlen(backup) - i));
-	if (!tmp)
+	str = (char *)malloc(sizeof(char) * (ft_strlen(backup) - i));
+	if (!str)
 		return (NULL);
 	i++;
 	while (backup[i])
-		tmp[j++] = backup[i++];
-	tmp[j] = '\0';
+		str[j++] = backup[i++];
+	str[j] = '\0';
 	free(backup);
 	backup = NULL;
-	return (tmp);
+	return (str);
 }
 
 char	*get_next_line(int fd)
