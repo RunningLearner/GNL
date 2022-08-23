@@ -14,25 +14,25 @@
 
 char	*ft_read(int fd, char *backup)
 {
-	char	*str;
-	int		check;
+	char	*buf;
+	int		cnt;
 
-	str = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!str)
 		return (NULL);
-	check = 1;
-	while (!ft_strchr(backup, '\n') && check != 0) // 받아놓은 것 중에 개행이 있거나 다 읽었을 경우 제외
+	cnt = 1;
+	while (!ft_strchr(backup, '\n') && cnt != 0)
 	{
-		check = read(fd, str, BUFFER_SIZE);
-		if (check == -1) // read 실패 시 -1 리턴
+		cnt = read(fd, buf, BUFFER_SIZE);
+		if (cnt == -1)
 		{
-			free(str);
+			free(buf); 댕글링
 			return (NULL);
 		}
-		str[check] = '\0';
-		backup = ft_strjoin(backup, str); // backup (받아놓을 문자열), str (read하고 backup 에 전달하기 위한 tmp)
+		buf[cnt] = '\0';
+		backup = ft_strjoin(backup, buf);
 	}
-	free(str);
+	free(buf);
 	return (backup);
 }
 
