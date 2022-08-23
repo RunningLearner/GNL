@@ -6,12 +6,16 @@
 /*   By: seunam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 10:19:17 by seunam            #+#    #+#             */
-/*   Updated: 2022/05/27 17:26:38 by seunam           ###   ########.fr       */
+/*   Updated: 2022/08/23 17:43:15 by seunam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 # include <stdlib.h>
 # include <unistd.h>
