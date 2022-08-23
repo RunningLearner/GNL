@@ -26,13 +26,15 @@ char	*ft_read(int fd, char *backup)
 		cnt = read(fd, buf, BUFFER_SIZE);
 		if (cnt == -1)
 		{
-			free(buf); 댕글링
+			free(buf);
+			buf = NULL;
 			return (NULL);
 		}
 		buf[cnt] = '\0';
 		backup = ft_strjoin(backup, buf);
 	}
 	free(buf);
+	buf = NULL;
 	return (backup);
 }
 
@@ -64,7 +66,7 @@ char	*ft_return_oneline(char *backup)
 	return (str);
 }
 
-char	*ft_backup(char *backup)
+char	*ft_cut_backup(char *backup)
 {
 	int		i;
 	int		j;
@@ -77,6 +79,7 @@ char	*ft_backup(char *backup)
 	if (!backup[i])
 	{
 		free(backup);
+		backup = NULL;
 		return (NULL);
 	}
 	tmp = (char *)malloc(sizeof(char) * (ft_strlen(backup) - i));
@@ -87,12 +90,13 @@ char	*ft_backup(char *backup)
 		tmp[j++] = backup[i++];
 	tmp[j] = '\0';
 	free(backup);
+	backup = NULL;
 	return (tmp);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*realline;
+	char		*oneline;
 	static char	*backup;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -100,7 +104,7 @@ char	*get_next_line(int fd)
 	backup = ft_read(fd, backup);
 	if (!backup)
 		return (NULL);
-	realline = ft_return_oneline(backup);
-	backup = ft_backup(backup);
-	return (realline);
+	oneline = ft_return_oneline(backup);
+	backup = ft_cut_backup(backup);
+	return (oneline);
 }
